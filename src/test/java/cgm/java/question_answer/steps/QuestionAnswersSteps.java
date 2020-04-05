@@ -5,7 +5,7 @@ import cgm.java.question_answer.entities.Question;
 import cgm.java.question_answer.interceptor.ArgumentsPersistenceInterceptorImpl;
 import cgm.java.question_answer.repository.AnswerRepositoryImpl;
 import cgm.java.question_answer.repository.QuestionRepositoryImpl;
-import cgm.java.question_answer.utilities.Utilities;
+import cgm.java.question_answer.utilities.StringUtilities;
 import cgm.java.question_answer.utils.ConverterUtil;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -63,9 +63,9 @@ public class QuestionAnswersSteps {
 
   @Given("the user adds question exceeding maximum characters")
   public void theUserAddsQuestionExceedingMaximumCharacters() {
-    StringBuilder question = Utilities.getAlphaNumericString(256);
+    StringBuilder question = StringUtilities.getAlphaNumericString(256);
     question.append(" adn?");
-    Set<Answers> answersSet = Utilities.getSetOfAnswersFromString("Pizza");
+    Set<Answers> answersSet = StringUtilities.getSetOfAnswersFromString("Pizza");
 
     exceededQuestion = new Question(question.toString(), answersSet);
     answersSet.forEach(exceededQuestion::addQuestionToAnswer);
@@ -81,8 +81,8 @@ public class QuestionAnswersSteps {
 
   @Given("the user adds question with answers exceeding maximum characters")
   public void theUserAddsQuestionWithAnswersExceedingMaximumCharacters() {
-    StringBuilder answer = Utilities.getAlphaNumericString(256);
-    Set<Answers> answersSet = Utilities.getSetOfAnswersFromString(answer.toString());
+    StringBuilder answer = StringUtilities.getAlphaNumericString(256);
+    Set<Answers> answersSet = StringUtilities.getSetOfAnswersFromString(answer.toString());
 
     String askedQuestion = "What is Peter's favourite food?";
     exceededQuestionWithAnswer = new Question(askedQuestion, answersSet);

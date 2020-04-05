@@ -17,7 +17,7 @@ import java.util.Set;
 
 @RequiredArgsConstructor
 @Component
-public class ArgumentsPersistenceInterceptorImpl implements ArgumentsRepositoryInterceptor {
+public class ArgumentsPersistenceInterceptorImpl implements ArgumentsPersisitenceInterceptor {
 
   private final AnswerRepository answerRepository;
   private final QuestionRepository questionRepository;

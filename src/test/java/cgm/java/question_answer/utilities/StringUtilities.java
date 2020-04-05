@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Utilities {
+public class StringUtilities {
 
   public static Set<Answers> getSetOfAnswersFromString(String answers) {
     return Stream.of(answers.split(","))
