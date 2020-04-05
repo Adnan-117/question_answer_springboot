@@ -27,8 +27,6 @@ pipeline {
         stage('Verify') {
             steps {
                 sh 'mvn pmd:check'
-            }
-            steps {
                 sh 'mvn spotbugs:check'
             }
         }
