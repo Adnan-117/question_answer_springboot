@@ -2,7 +2,7 @@ package cgm.java.question_answer.interceptor;
 
 import cgm.java.question_answer.entities.Question;
 
-public interface ArgumentsPersisitenceInterceptor {
+public interface ArgumentsPersistenceInterceptor {
 
   void fetchAnswersForQuestionAsked(Question questionAsked);
 
