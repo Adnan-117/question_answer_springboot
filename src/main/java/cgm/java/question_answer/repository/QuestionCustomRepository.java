@@ -2,7 +2,7 @@ package cgm.java.question_answer.repository;
 
 import cgm.java.question_answer.entities.Question;
 
-public interface QuestionRepository {
+public interface QuestionCustomRepository {
 
   boolean saveQuestion(Question question);
 

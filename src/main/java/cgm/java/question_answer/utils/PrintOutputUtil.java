@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class PrintOutputUtil {
 
-  final static String defaultAnswer = " \"the answer to life, universe and everything is 42\" according to \"The hitchhikers guide to the Galaxy\" ";
+  private final static String defaultAnswer = " \"the answer to life, universe and everything is 42\" according to \"The hitchhikers guide to the Galaxy\" ";
   private static final Logger logger = LogManager.getLogger(PrintOutputUtil.class);
 
   public static void printNoArgumentsPresent() {

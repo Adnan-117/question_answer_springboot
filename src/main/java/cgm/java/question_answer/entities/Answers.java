@@ -1,7 +1,9 @@
 package cgm.java.question_answer.entities;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +19,8 @@ import javax.validation.constraints.Size;
 
 @Getter
 @Setter
+@EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "Answers")
 public class Answers {
@@ -32,6 +36,8 @@ public class Answers {
   @Column(name = "answer_text")
   private String answer_text;
 
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
   @NotNull
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "question_id", nullable = false)

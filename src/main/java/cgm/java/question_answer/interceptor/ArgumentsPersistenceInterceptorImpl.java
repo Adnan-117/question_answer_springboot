@@ -2,8 +2,8 @@ package cgm.java.question_answer.interceptor;
 
 import cgm.java.question_answer.entities.Answers;
 import cgm.java.question_answer.entities.Question;
-import cgm.java.question_answer.repository.AnswerRepository;
-import cgm.java.question_answer.repository.QuestionRepository;
+import cgm.java.question_answer.repository.AnswerCustomRepository;
+import cgm.java.question_answer.repository.QuestionCustomRepository;
 import cgm.java.question_answer.utils.ConverterUtil;
 import cgm.java.question_answer.utils.PrintOutputUtil;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +17,10 @@ import java.util.Set;
 
 @RequiredArgsConstructor
 @Component
-public class ArgumentsPersistenceInterceptorImpl implements ArgumentsPersisitenceInterceptor {
+public class ArgumentsPersistenceInterceptorImpl implements ArgumentsPersistenceInterceptor {
 
-  private final AnswerRepository answerRepository;
-  private final QuestionRepository questionRepository;
+  private final AnswerCustomRepository answerRepository;
+  private final QuestionCustomRepository questionRepository;
 
   private static Logger logger = LogManager.getLogger(ArgumentsPersistenceInterceptorImpl.class);
   private boolean flagQuestionAppended = false;

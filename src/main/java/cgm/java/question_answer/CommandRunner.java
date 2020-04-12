@@ -1,10 +1,7 @@
 package cgm.java.question_answer;
 
 import cgm.java.question_answer.interceptor.ArgumentsPersistenceInterceptorImpl;
-import cgm.java.question_answer.repository.AnswerRepositoryImpl;
 import lombok.RequiredArgsConstructor;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +11,6 @@ import org.springframework.stereotype.Component;
 public class CommandRunner implements CommandLineRunner {
 
   private final ArgumentsPersistenceInterceptorImpl argumentsPersistenceInterceptor;
-  private static Logger logger = LogManager.getLogger(AnswerRepositoryImpl.class);
 
   @Override
   public void run(String... args) {

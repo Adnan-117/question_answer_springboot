@@ -16,9 +16,9 @@ Feature: Question and Answers
 
   Scenario: user adds a question with answers not stored in the database
     Given the user adds the question "What is Peters favourite food?" with answers
-      | "Pasta"   |
-      | "Rice"    |
-      | "Chicken" |
+      | Pasta   |
+      | Rice    |
+      | Chicken |
     Then verify this question doesn't exist with answers
     And the question includes atleast one answer
     And both question and answers doesn't exceed the maximum character space of 255
@@ -29,7 +29,7 @@ Feature: Question and Answers
     Given the user asks a question "What is Peters favourite food?" already stored
     Then verify this question exists
     And the program must fetch the following answers
-      | "Pasta"   |
-      | "Rice"    |
-      | "Chicken" |
+      | Pasta   |
+      | Rice    |
+      | Chicken |
 

@@ -15,9 +15,9 @@ import javax.persistence.PersistenceException;
 
 @RequiredArgsConstructor
 @Repository
-public class QuestionRepositoryImpl implements QuestionRepository {
+public class QuestionCustomRepositoryImpl implements QuestionCustomRepository {
 
-  private static Logger logger = LogManager.getLogger(QuestionRepositoryImpl.class);
+  private static Logger logger = LogManager.getLogger(QuestionCustomRepositoryImpl.class);
   private final EntityManagerFactory emFactory;
 
   @Override

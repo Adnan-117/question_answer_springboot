@@ -1,7 +1,9 @@
 package cgm.java.question_answer.entities;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,6 +22,8 @@ import java.util.Set;
 
 @Getter
 @Setter
+@EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "Question")
 public class Question  {
@@ -35,6 +39,8 @@ public class Question  {
   @Column(name = "question_text", unique = true)
   private String question_text;
 
+  @EqualsAndHashCode.Exclude
+  @ToString.Exclude
   @OneToMany(cascade = {CascadeType.ALL }, mappedBy = "question", fetch = FetchType.EAGER)
   public Set<Answers> answersList = new HashSet<>();
 

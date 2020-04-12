@@ -3,8 +3,8 @@ package cgm.java.question_answer.steps;
 import cgm.java.question_answer.entities.Answers;
 import cgm.java.question_answer.entities.Question;
 import cgm.java.question_answer.interceptor.ArgumentsPersistenceInterceptorImpl;
-import cgm.java.question_answer.repository.AnswerRepositoryImpl;
-import cgm.java.question_answer.repository.QuestionRepositoryImpl;
+import cgm.java.question_answer.repository.AnswerCustomRepositoryImpl;
+import cgm.java.question_answer.repository.QuestionCustomRepositoryImpl;
 import cgm.java.question_answer.utilities.StringUtilities;
 import cgm.java.question_answer.utils.ConverterUtil;
 import io.cucumber.java.en.And;
@@ -29,8 +29,8 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class QuestionAnswersSteps {
 
-  private final QuestionRepositoryImpl questionRepository;
-  private final AnswerRepositoryImpl answerRepository;
+  private final QuestionCustomRepositoryImpl questionRepository;
+  private final AnswerCustomRepositoryImpl answerRepository;
   private final ArgumentsPersistenceInterceptorImpl argumentsPersistenceInterceptor;
 
   private static Question questionAskedNotStoredYet = null;

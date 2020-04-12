@@ -17,9 +17,9 @@ import java.util.Set;
 
 @RequiredArgsConstructor
 @Repository
-public class AnswerRepositoryImpl implements AnswerRepository {
+public class AnswerCustomRepositoryImpl implements AnswerCustomRepository {
 
-  private static final Logger logger = LogManager.getLogger(AnswerRepositoryImpl.class);
+  private static final Logger logger = LogManager.getLogger(AnswerCustomRepositoryImpl.class);
   private final EntityManagerFactory emFactory;
 
 
