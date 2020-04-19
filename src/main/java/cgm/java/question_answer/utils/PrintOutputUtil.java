@@ -26,10 +26,10 @@ public class PrintOutputUtil {
 
   }
 
-  public static void printAnswersFetched(StringBuilder argQuestion, Set<Answers> answersFetched) {
+  public static void printAnswersFetched(String argQuestion, Set<Answers> answersFetched) {
 
     logger.info( "This Question exists in the program" + "\n");
-    logger.info("• " + argQuestion.toString() + "\n");
+    logger.info("• " + argQuestion + "\n");
 
     answersFetched.forEach(answer -> logger.info(LeftPaddingToStringUtil.addLeftPadding(2, "• " + answer.getAnswer_text() + "\n")));
   }

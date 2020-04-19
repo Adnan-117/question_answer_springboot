@@ -2,7 +2,6 @@ package cgm.java.question_answer.interceptor;
 
 import cgm.java.question_answer.entities.Answers;
 import cgm.java.question_answer.entities.Question;
-import cgm.java.question_answer.repository.AnswerCustomRepository;
 import cgm.java.question_answer.repository.QuestionCustomRepository;
 import cgm.java.question_answer.utils.ConverterUtil;
 import cgm.java.question_answer.utils.PrintOutputUtil;
@@ -19,7 +18,6 @@ import java.util.Set;
 @Component
 public class ArgumentsPersistenceInterceptorImpl implements ArgumentsPersistenceInterceptor {
 
-  private final AnswerCustomRepository answerRepository;
   private final QuestionCustomRepository questionRepository;
 
   private static Logger logger = LogManager.getLogger(ArgumentsPersistenceInterceptorImpl.class);
@@ -59,9 +57,11 @@ public class ArgumentsPersistenceInterceptorImpl implements ArgumentsPersistence
       fetchAnswersForQuestionAsked(questionAsked);
     } else {
       //      logger.debug("Answers are present");
-      if (verifyIfQuestionExists(questionAsked)) {
+      Question alreadyExistsQuestion = verifyIfQuestionExists(questionAsked);
+      if (alreadyExistsQuestion != null) {
         //      logger.debug("Question already stored get answers");
-        getAnswers(questionAsked);
+        Set<Answers> answersFetched = alreadyExistsQuestion.getAnswersList();
+        PrintOutputUtil.printAnswersFetched(alreadyExistsQuestion.getQuestion_text(), answersFetched);
       } else {
         //      logger.debug("Question not stored ");
         persistQuestionWithAnswers(questionAsked);
@@ -71,9 +71,11 @@ public class ArgumentsPersistenceInterceptorImpl implements ArgumentsPersistence
 
   @Override
   public void fetchAnswersForQuestionAsked(Question questionAsked) {
-    if (verifyIfQuestionExists(questionAsked)) {
+    Question alreadyExistsQuestion = verifyIfQuestionExists(questionAsked);
+    if (alreadyExistsQuestion != null) {
       //      logger.debug("Question already stored get answers");
-      getAnswers(questionAsked);
+      Set<Answers> answersFetched = alreadyExistsQuestion.getAnswersList();
+      PrintOutputUtil.printAnswersFetched(alreadyExistsQuestion.getQuestion_text(), answersFetched);
     } else {
       //      logger.debug("Question not stored but has no answers therefore logging default answer");
       PrintOutputUtil.printDefaultAnswer(argQuestion);
@@ -81,13 +83,13 @@ public class ArgumentsPersistenceInterceptorImpl implements ArgumentsPersistence
   }
 
   @Override
-  public boolean verifyIfQuestionExists(Question questionAsked) {
+  public Question verifyIfQuestionExists(Question questionAsked) {
     try {
       Question alreadyExistsQuestion = questionRepository.getQuestionByText(questionAsked);
-      return alreadyExistsQuestion != null;
+      return alreadyExistsQuestion;
     } catch (NullPointerException e) {
       logger.error("Question does not exist");
-      return false;
+      return null;
     }
   }
 
@@ -106,16 +108,6 @@ public class ArgumentsPersistenceInterceptorImpl implements ArgumentsPersistence
 
     if (isPersisted) {
       PrintOutputUtil.printPersistedQuestionWithAnswers(questionWithAnswers);
-    }
-  }
-
-  public void getAnswers(Question questionAsked) {
-    try {
-      Set<Answers> answersFetched = answerRepository.getAnswers(questionAsked);
-      PrintOutputUtil.printAnswersFetched(argQuestion, answersFetched);
-      //      logger.debug("answers fetched");
-    } catch (NullPointerException e) {
-      logger.error("Answers does not exist");
     }
   }
 }

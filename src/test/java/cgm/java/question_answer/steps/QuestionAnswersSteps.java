@@ -51,7 +51,8 @@ public class QuestionAnswersSteps {
 
   @Then("verify this question doesn't exist")
   public void verifyQuestionNotExist() {
-    boolean retrievedExistFlag = argumentsPersistenceInterceptor.verifyIfQuestionExists(questionAskedNotStoredYet);
+    Question askedQuestion = argumentsPersistenceInterceptor.verifyIfQuestionExists(questionAskedNotStoredYet);
+    boolean retrievedExistFlag = askedQuestion != null ? true : false;
     Assert.assertFalse(retrievedExistFlag);
     logger.info("Question asked, not stored yet: " + questionAskedNotStoredYet.getQuestion_text());
   }
@@ -107,7 +108,8 @@ public class QuestionAnswersSteps {
 
   @Then("verify this question doesn't exist with answers")
   public void verifyThisQuestionDoesntExistWithAnswers() {
-    boolean retrievedExistFlag = argumentsPersistenceInterceptor.verifyIfQuestionExists(questionToAdd);
+    Question askedQuestion = argumentsPersistenceInterceptor.verifyIfQuestionExists(questionAskedNotStoredYet);
+    boolean retrievedExistFlag = askedQuestion != null ? true : false;
     Assert.assertFalse(retrievedExistFlag);
   }
 
@@ -138,7 +140,8 @@ public class QuestionAnswersSteps {
 
   @Then("verify this question exists")
   public void verifyThisQuestionExists() {
-    boolean retrievedExistFlag = argumentsPersistenceInterceptor.verifyIfQuestionExists(questionAskedAlreadyStored);
+    Question askedQuestion = argumentsPersistenceInterceptor.verifyIfQuestionExists(questionAskedNotStoredYet);
+    boolean retrievedExistFlag = askedQuestion != null ? true : false;
     Assert.assertTrue(retrievedExistFlag);
   }
 

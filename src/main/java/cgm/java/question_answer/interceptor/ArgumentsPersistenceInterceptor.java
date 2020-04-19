@@ -6,7 +6,7 @@ public interface ArgumentsPersistenceInterceptor {
 
   void fetchAnswersForQuestionAsked(Question questionAsked);
 
-  boolean verifyIfQuestionExists(Question questionAsked);
+  Question verifyIfQuestionExists(Question questionAsked);
 
   void persistQuestionWithAnswers(Question questionToAdd);
 

@@ -26,7 +26,7 @@ services:
     container_name: 'jenkins'
     volumes:
       - jenkins-data:/var/jenkins_home
-
+      # - /var/run/docker.sock:/var/run/docker.sock   Docker in Docker Jenkins container same instance of the host docker
 
 volumes:
   mysql-data:
